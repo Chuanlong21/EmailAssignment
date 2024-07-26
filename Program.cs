@@ -1,5 +1,4 @@
-using EmailSenderAPI;
-    
+namespace EmailSenderAPI;
 class Program
 {
     static async Task Main(string[] args)
