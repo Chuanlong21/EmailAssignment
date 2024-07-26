@@ -1,0 +1,4 @@
+﻿# Ignore JetBrains Rider specific files
+.idea/
+bin/
+obj
