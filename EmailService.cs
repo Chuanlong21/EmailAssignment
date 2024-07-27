@@ -57,20 +57,9 @@ public class EmailService
         }
     }
     
-    private void CheckErrorLogExists()
-    {
-        string errorLogDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Errorlog");
-        if (!Directory.Exists(errorLogDirectory))
-        {
-            Directory.CreateDirectory(errorLogDirectory);
-        }
-    }
-    
     
     private void LogEmail(string recipient, string subject, string body, string status, bool isSuccess)
     {
-
-        CheckErrorLogExists();
         
         string errorLogDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Log");
         string logFileName = isSuccess 

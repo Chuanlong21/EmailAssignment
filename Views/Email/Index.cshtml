@@ -1,0 +1,77 @@
+﻿@model EmailSenderAPI.Model.EmailModel
+<html >
+<head>
+ 
+    <title>Send Email</title>
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .form-group button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+        .alert {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #d4edda;
+            border-radius: 5px;
+            background-color: #d4edda;
+            color: #155724;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Send Email</h2>
+        <form action="/Email/SendEmail" method="post">
+            <div class="form-group">
+                <label for="Recipient">Recipient Email</label>
+                <input type="email" id="Recipient" name="Recipient" required>
+            </div>
+            <div class="form-group">
+                <label for="Subject">Subject</label>
+                <input type="text" id="Subject" name="Subject" required>
+            </div>
+            <div class="form-group">
+                <label for="Body">Body</label>
+                <textarea id="Body" name="Body" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit">Send Email</button>
+            </div>
+        </form>
+        
+        @if (ViewBag.Message != null)
+        {
+            <div class="alert">
+                @ViewBag.Message
+            </div>
+        }
+    </div>
+</body>
+</html>
