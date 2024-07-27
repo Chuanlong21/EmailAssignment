@@ -3,5 +3,4 @@
 bin/
 obj/
 
-Log/*
-!Log/
+
