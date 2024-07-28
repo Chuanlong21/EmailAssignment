@@ -41,7 +41,7 @@ Before running the application, you need to configure SMTP settings in the `apps
     "SmtpServer": "smtp.gmail.com",
     "Port": 587,
     "Username": "your_email@gmail.com",
-    "Password": "your_email_password",
+    "Password": "your_email_app_password",
     "EnableSsl": true,
     "FromEmail": "your_email@gmail.com"
   }
