@@ -1,5 +1,5 @@
 Date: 2024-07-27 19:00:08
-Recipient: chuanlong63@gmail.com
+Recipient: example@gmail.com
 Subject: Hello
 Body: 123
 Status: Sent
