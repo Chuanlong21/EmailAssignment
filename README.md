@@ -34,7 +34,7 @@ A simple application to enable users to send email to customer.
 
 Before running the application, you need to configure SMTP settings in the `appsettings.json`
 ##### Since the application sends email based on TLS portal, so please use your app password
-[How to create your google app password on Google](https://support.google.com/accounts/answer/185833?hl=en)
+[How to create your app password on Google](https://support.google.com/accounts/answer/185833?hl=en)
 ```
 {
   "EmailSettings": {
