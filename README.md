@@ -24,3 +24,66 @@ A simple application to enable users to send email to customer.
 
 ## Installation
 
+1. Git clone this repository
+2. Run `dotnet restore`
+3. Run `dotnet build` to build the project
+
+## Configuration
+
+Before running the application, you need to configure SMTP settings in the `appsettings.json`
+```
+{
+  "EmailSettings": {
+    "SmtpServer": "smtp.gmail.com",
+    "Port": 587,
+    "Username": "your_email@gmail.com",
+    "Password": "your_email_password",
+    "EnableSsl": true,
+    "FromEmail": "your_email@gmail.com"
+  }
+}
+```
+
+##  How to Run
+
+### Run `WebApp`
+To run the web application, use the following command:
+```
+dotnet run --launch-profile "WebApp"
+```
+
+Then EmailSenderApi is available  through [Email](http://localhost:5000/Email)
+
+![Home](images/index.png)
+
+##  How to Test
+
+### WebApp
+
+1. Input required Recipient Email, Subject and Body
+2. Click on 'Send Email' to send a `POST` request to `http://localhost:5000/Email/SendEmail`
+3. Display notification `Email sent successfully!` and create a `sentlog` when email sent 
+4. Display nothing when email fails to send, but create a `faillog`
+5. Check current project path `Log` folder to see if there are any logs 
+
+![Success](images/success.png)
+
+### Postman test
+
+1. Open Postman 
+2. Create a new `POST` request, url is `http://localhost:5000/Email/PostmanSendEmail`
+3. Set the header `Content-Type` to `application/json`
+4. Enter the following JSON data in Body
+```
+{
+  "Recipient": "recipient_email@example.com",
+  "Subject": "Test Subject",
+  "Body": "This is the test body of the email"
+}
+```
+5. Send the request and check the response.
+![Postman Test](images/postman_test.png)
+
+### Retry mechanism
+When the email fails to be sent, the application will retry sending, up to 3 times with an interval of 2 seconds between each sending attempt. You can see there will be 3 `faillog` created under `Log` folder.
+
