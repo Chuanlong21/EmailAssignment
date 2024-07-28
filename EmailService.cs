@@ -10,6 +10,7 @@ public class EmailService
     private readonly IConfiguration _configuration;
     private const int MaxRetries = 3;
     
+    
     public EmailService(IConfiguration configuration)
     {
         _configuration = configuration;
