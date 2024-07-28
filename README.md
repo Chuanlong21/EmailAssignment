@@ -16,6 +16,8 @@ A simple application to enable users to send email to customer.
   - [x] EXTRA Credit if a front end (wpf/asp.net web application/etc...) calls the API to send the email.
   - [x] In any scenario you should be able to take in an input of a recipient email to send a test email.
 
+## Project flowchart
+![Flowchart](images/Flowchart.png)
 
 ## Requirements
 
