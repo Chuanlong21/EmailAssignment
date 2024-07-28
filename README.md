@@ -19,7 +19,7 @@ A simple application to enable users to send email to customer.
 
 ## Requirements
 
-  - .Net 8.0.7
+  - .Net 8.0.7 [[Download]](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 
 
 ## Installation
