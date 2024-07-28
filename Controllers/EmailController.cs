@@ -32,5 +32,18 @@ public class EmailController : Controller
         }
         return View("Index");
     }
+    
+    [HttpPost]
+    [Route("PostmanSendEmail")]
+    public async Task<IActionResult> PostmanSendEmail([FromBody] EmailModel emailRequest)
+    {
+
+        if (ModelState.IsValid)
+        {
+            await _emailService.SendEmailAsync(emailRequest.Recipient, emailRequest.Subject, emailRequest.Body);
+            return Ok(new { message = "Email sent successfully!" });
+        }
+        return BadRequest(ModelState);
+    }
 }
 

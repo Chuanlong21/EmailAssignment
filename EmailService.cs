@@ -52,7 +52,8 @@ public class EmailService
                 if (attempt >= MaxRetries)
                 {
                     throw;
-                }
+                } 
+                await Task.Delay(2000);
             }
         }
     }
