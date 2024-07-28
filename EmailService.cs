@@ -10,6 +10,7 @@ public class EmailService
     private readonly IConfiguration _configuration;
     private const int MaxRetries = 3;
     
+    
     public EmailService(IConfiguration configuration)
     {
         _configuration = configuration;
@@ -43,23 +44,37 @@ public class EmailService
 
                 await smtpClient.SendMailAsync(mailMessage);
                 sent = true;
-                LogEmail(recipient, subject, body, "Sent");
+                LogEmail(recipient, subject, body, "Sent", true);
             }
             catch (Exception ex)
             {
                 attempt++;
-                LogEmail(recipient, subject, body, $"Failed: {ex.Message}");
+                LogEmail(recipient, subject, body, $"Failed: {ex.Message}", false);
                 if (attempt >= MaxRetries)
                 {
                     throw;
-                }
+                } 
+                await Task.Delay(2000);
             }
         }
     }
     
-    private void LogEmail(string recipient, string subject, string body, string status)
+    
+    private void LogEmail(string recipient, string subject, string body, string status, bool isSuccess)
     {
-        // Implement logging logic here (e.g., write to a file or database)
+        
+        string errorLogDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Log");
+        string logFileName = isSuccess 
+            ? $"sentlog_{DateTime.Now:yyyyMMdd_HHmmssfff}.txt"
+            : $"faillog_{DateTime.Now:yyyyMMdd_HHmmssfff}.txt";
+        string logFilePath = Path.Combine(errorLogDirectory, logFileName);
+        
+        string logEntry = $"Date: {DateTime.Now:yyyy-MM-dd HH:mm:ss}\nRecipient: {recipient}\nSubject: {subject}\nBody: {body}\nStatus: {status}";
+
+        using (StreamWriter sw = new StreamWriter(logFilePath, true))
+        {
+            sw.WriteLine(logEntry);
+        }
     }
 
     
