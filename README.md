@@ -52,7 +52,7 @@ To run the web application, use the following command:
 dotnet run --launch-profile "WebApp"
 ```
 
-Then EmailSenderApi is available  through [Email](http://localhost:5000/Email)
+Then EmailSenderApi is available  through [http://localhost:5000/Email](http://localhost:5000/Email)
 
 ![Home](images/index.png)
 
@@ -65,7 +65,7 @@ Then EmailSenderApi is available  through [Email](http://localhost:5000/Email)
 3. Display notification `Email sent successfully!` and create a `sentlog` when email sent 
 4. Display nothing when email fails to send, but create a `faillog`
 5. Check current project path `Log` folder to see if there are any logs 
-
+6. Check the recipient's mailbox
 ![Success](images/success.png)
 
 ### Postman test
@@ -87,3 +87,6 @@ Then EmailSenderApi is available  through [Email](http://localhost:5000/Email)
 ### Retry mechanism
 When the email fails to be sent, the application will retry sending, up to 3 times with an interval of 2 seconds between each sending attempt. You can see there will be 3 `faillog` created under `Log` folder.
 
+#### test by:
+    1. Provides incorrect SMTP configuration.
+    2. Use Postman to send the request and observe whether the retry mechanism takes effect.
